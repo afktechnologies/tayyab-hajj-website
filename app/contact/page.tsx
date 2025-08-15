@@ -1,7 +1,7 @@
 import { ContactForm } from "@/components/contact-form"
 import { Phone, Mail, MapPin, MessageCircle } from "lucide-react"
 
-export default function ContactPage() {
+export default async function ContactPage() {
   return (
     <div className="min-h-screen">
       {/* Header */}

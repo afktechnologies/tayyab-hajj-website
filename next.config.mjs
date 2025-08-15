@@ -7,9 +7,14 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    unoptimized: true, // or remove if you plan to optimize later
-    domains: ["images.unsplash.com"], // 👈 add this line
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        port: "",
+      },
+    ],
   },
-}
+};
 
-export default nextConfig
+export default nextConfig;

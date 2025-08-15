@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="hydrated">
       <body className={`${inter.variable} ${amiri.variable} font-sans antialiased`}>
         <Navigation />
         <main className="min-h-screen">{children}</main>

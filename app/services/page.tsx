@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
@@ -8,6 +8,7 @@ import { Calendar, Users, Plane, MessageCircle, Star, Shield } from "lucide-reac
 import { BookingFormModal } from "@/components/modals/booking-form-modal"
 import { HajjRegistrationModal } from "@/components/modals/hajj-registration-modal"
 import Link from "next/link"
+import { IService } from "@/models/Service"
 
 const services = [
   {
@@ -121,35 +122,30 @@ const testimonialsPreview = [
 ]
 
 export default function ServicesPage() {
-  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false)
-  const [isHajjModalOpen, setIsHajjModalOpen] = useState(false)
-  const [currentTripType, setCurrentTripType] = useState("")
+  const [services, setServices] = useState<IService[]>([])
 
-  const handleServiceAction = (actionType: string, tripType?: string) => {
-    switch (actionType) {
-      case "modal-booking-umrah":
-        setCurrentTripType(tripType || "Umrah")
-        setIsBookingModalOpen(true)
-        break
-      case "modal-hajj-registration":
-        setIsHajjModalOpen(true)
-        break
-      case "contact-visa":
-        window.open(
-          "https://wa.me/15551234567?text=Assalamu%20Alaikum,%20I%20would%20like%20to%20inquire%20about%20Umrah%20Visa%20Services.",
-          "_blank",
-        )
-        break
-      case "external-whatsapp-group":
-        window.open("https://chat.whatsapp.com/your-group-invite", "_blank")
-        break
-      case "contact-general":
-      case "contact-vip":
-        window.location.href = "/contact"
-        break
-      default:
-        console.log("Unknown action:", actionType)
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const response = await fetch("/api/service", { cache: "no-store" })
+        const data = await response.json()
+        if (data.services) {
+          setServices(data.services)
+        }
+      } catch (error) {
+        console.error("Failed to fetch services:", error)
+      }
     }
+    fetchServices()
+  }, [])
+
+  const iconComponents = {
+    Calendar: Calendar,
+    Star: Star,
+    Plane: Plane,
+    MessageCircle: MessageCircle,
+    Users: Users,
+    Shield: Shield,
   }
 
   return (
@@ -169,8 +165,8 @@ export default function ServicesPage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => {
-              const IconComponent = service.icon
-              const colorClasses = {
+              const IconComponent = iconComponents[service.icon as keyof typeof iconComponents]
+             const colorClasses = {
                 yellow: "bg-yellow-100 text-yellow-600",
                 green: "bg-green-100 text-green-600",
                 blue: "bg-blue-100 text-blue-600",
@@ -178,26 +174,18 @@ export default function ServicesPage() {
                 red: "bg-red-100 text-red-600",
               }
 
-              let buttonText = "Learn More"
-              if (service.action === "modal-booking-umrah") buttonText = "Book Now"
-              if (service.action === "modal-hajj-registration") buttonText = "Register Interest"
-              if (service.action === "contact-visa") buttonText = "Contact for Visa"
-              if (service.action === "external-whatsapp-group") buttonText = "Join Group"
-              if (service.action === "contact-general") buttonText = "Contact Us"
-              if (service.action === "contact-vip") buttonText = "Inquire Now"
-
               return (
-                <Card key={index} className="card-hover" id={service.id}>
+                <Card key={index} className="border-[#DCD1D5] bg-[#FAFAFA] hover:shadow-lg transition-shadow" id={service.id}>
                   <CardHeader>
                     <div
                       className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 ${colorClasses[service.color as keyof typeof colorClasses]}`}
                     >
                       <IconComponent className="h-8 w-8" />
                     </div>
-                    <CardTitle className="text-xl font-arabic text-center">{service.title}</CardTitle>
+                    <CardTitle className="text-xl font-arabic text-center text-[#171717]">{service.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-gray-600 mb-4 text-center">{service.description}</p>
+                    <p className="text-[#757575] mb-4 text-center">{service.description}</p>
                     <ul className="space-y-2 mb-6">
                       {service.features.map((feature, featureIndex) => (
                         <li key={featureIndex} className="flex items-center space-x-2">
@@ -206,12 +194,11 @@ export default function ServicesPage() {
                         </li>
                       ))}
                     </ul>
-                    <Button
-                      className="btn-primary w-full"
-                      onClick={() => handleServiceAction(service.action, service.title)}
-                    >
-                      {buttonText}
-                    </Button>
+                    <Link href={`/contact?enquiryFor=${encodeURIComponent(service.title)}`}>
+                      <Button className="btn-primary w-full">
+                        Inquire Now
+                      </Button>
+                    </Link>
                   </CardContent>
                 </Card>
               )
@@ -241,41 +228,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Testimonials Preview */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4 font-arabic text-gray-800">What Our Pilgrims Say</h2>
-            <p className="text-lg text-gray-600">Hear from those who have experienced the journey with us</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonialsPreview.map((testimonial, index) => (
-              <Card key={index} className="card-hover">
-                <CardContent className="p-6">
-                  <div className="flex items-center mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                    ))}
-                  </div>
-                  <p className="text-gray-600 mb-4 italic">"{testimonial.text}"</p>
-                  <div>
-                    <p className="font-semibold">{testimonial.name}</p>
-                    <p className="text-sm text-gray-500">{testimonial.location}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          <div className="text-center mt-8">
-            <Link href="/testimonials">
-              <Button className="btn-secondary">View All Testimonials</Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* Contact Section */}
       <section className="py-16 bg-islamic-gradient">
         <div className="container mx-auto px-4 text-center">
@@ -298,13 +250,6 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
-
-      <BookingFormModal
-        isOpen={isBookingModalOpen}
-        onClose={() => setIsBookingModalOpen(false)}
-        tripType={currentTripType}
-      />
-      <HajjRegistrationModal isOpen={isHajjModalOpen} onClose={() => setIsHajjModalOpen(false)} />
     </div>
   )
 }

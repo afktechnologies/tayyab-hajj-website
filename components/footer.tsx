@@ -1,8 +1,17 @@
+"use client"
+import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { Facebook, Instagram, MessageCircle, Phone, Mail, MapPin } from "lucide-react"
 
 export function Footer() {
+  const pathname = usePathname()
+
+  // Hide footer for /auth/login or /admin routes
+  if (pathname === "/auth/login" || pathname.startsWith("/admin")) {
+    return null
+  }
+
   return (
     <footer className="bg-gray-900 text-white">
       <div className="container mx-auto px-4 py-12">
@@ -82,7 +91,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-gray-300 hover:text-yellow-500 transition-colors">
+                <Link href="/contact?enquiryFor=General" className="text-gray-300 hover:text-yellow-500 transition-colors">
                   Contact
                 </Link>
               </li>

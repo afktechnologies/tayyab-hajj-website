@@ -4,10 +4,11 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import kaabaImage from "@/public/images/kaaba.jpg"
 
 const slides = [
   {
-    image: "/public/images/kaaba.jpg",
+    image: kaabaImage,
     quote:
       '"And it is the right of Allah upon the people that they perform Hajj to the House - whoever is able to find thereto a way." - Quran 3:97',
     title: "Sacred Kaaba",

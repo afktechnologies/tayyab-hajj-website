@@ -61,50 +61,6 @@ export default function TestimonialsPage() {
         </div>
       </section>
 
-      {/* Photos and Videos from Group Trips (Placeholder) */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-8 font-arabic text-gray-800">Moments from Our Sacred Journeys</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="relative w-full h-60 rounded-lg overflow-hidden shadow-lg">
-              <img
-                src="/placeholder.svg?height=240&width=360"
-                alt="Group in Mecca"
-                className="object-cover w-full h-full"
-              />
-              <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center text-white font-semibold">
-                Mecca Group Tour
-              </div>
-            </div>
-            <div className="relative w-full h-60 rounded-lg overflow-hidden shadow-lg">
-              <img
-                src="/placeholder.svg?height=240&width=360"
-                alt="Pilgrims in Madinah"
-                className="object-cover w-full h-full"
-              />
-              <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center text-white font-semibold">
-                Madinah Reflections
-              </div>
-            </div>
-            <div className="relative w-full h-60 rounded-lg overflow-hidden shadow-lg">
-              <img
-                src="/placeholder.svg?height=240&width=360"
-                alt="Hajj Rituals"
-                className="object-cover w-full h-full"
-              />
-              <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center text-white font-semibold">
-                Hajj Rituals (Video)
-              </div>
-            </div>
-          </div>
-          <div className="text-center mt-8">
-            <Link href="/gallery">
-              <Button className="btn-secondary">View Full Gallery</Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
       <FeedbackFormModal isOpen={isFeedbackModalOpen} onClose={() => setIsFeedbackModalOpen(false)} />
     </div>
   )

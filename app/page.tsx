@@ -1,32 +1,37 @@
+
 import { HeroSlider } from "@/components/hero-slider"
 import { IslamicQuotes } from "@/components/islamic-quotes"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Calendar, Users, Plane, MessageCircle, Phone, Star } from "lucide-react"
 import Link from "next/link"
+import { ITestimonial } from "@/models/Testimonial"
+import TestimonialsPreview from "@/components/TestimonialsPreview"
 
-const testimonials = [
-  {
-    name: "Sister Fatima Ahmed",
-    location: "Toronto, Canada",
-    text: "Alhamdulillah, the most spiritually fulfilling experience of my life. Sheikh Abdullahu's guidance made every moment meaningful.",
-    rating: 5,
-  },
-  {
-    name: "Brother Omar Hassan",
-    location: "New York, USA",
-    text: "Professional service, beautiful accommodations, and authentic Islamic guidance. Highly recommend Taybah Hajj & Umrah.",
-    rating: 5,
-  },
-  {
-    name: "Sister Aisha Mohammad",
-    location: "California, USA",
-    text: "The VIP package exceeded all expectations. Every detail was perfectly arranged. May Allah reward the entire team.",
-    rating: 5,
-  },
-]
+async function getTestimonials(): Promise<{ testimonials: ITestimonial[] | null; error?: string }> {
+  try {
+    const response = await fetch(`${process.env.BASE_URL}/api/testimonials`, {
+      cache: "no-store",
+    });
+    if (!response.ok) {
+      return { testimonials: null, error: "Failed to fetch testimonials" };
+    }
+    const data = await response.json();
+    // Sort by rating (descending) and take top 3
+    const sortedTestimonials = data.testimonials 
+      ? [...data.testimonials]
+          .sort((a: ITestimonial, b: ITestimonial) => b.rating - a.rating)
+          .slice(0, 3)
+      : [];
+    return { testimonials: sortedTestimonials };
+  } catch (error) {
+    return { testimonials: null, error: "Server error" };
+  }
+}
 
-export default function HomePage() {
+export default async function HomePage() {
+  const { testimonials, error } = await getTestimonials();
+
   return (
     <div>
       {/* Hero Slider */}
@@ -160,24 +165,13 @@ export default function HomePage() {
             <p className="text-lg text-gray-600">Hear from those who have experienced the journey with us</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <Card key={index} className="card-hover">
-                <CardContent className="p-6">
-                  <div className="flex items-center mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                    ))}
-                  </div>
-                  <p className="text-gray-600 mb-4 italic">"{testimonial.text}"</p>
-                  <div>
-                    <p className="font-semibold">{testimonial.name}</p>
-                    <p className="text-sm text-gray-500">{testimonial.location}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          {error || !testimonials ? (
+            <p className="text-gray-600 text-center text-lg">
+              Unable to load testimonials. Please try again later.
+            </p>
+          ) : (
+            <TestimonialsPreview testimonials={testimonials} />
+          )}
 
           <div className="text-center mt-8">
             <Link href="/testimonials">

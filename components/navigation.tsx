@@ -2,11 +2,18 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Menu, X, Phone, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export function Navigation() {
+  const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
+
+  // Hide navbar for /auth/login or /admin routes
+  if (pathname === "/auth/login" || pathname.startsWith("/admin")) {
+    return null
+  }
 
   const navItems = [
     { href: "/", label: "Home" },
@@ -16,7 +23,6 @@ export function Navigation() {
     { href: "/services", label: "Services" },
     { href: "/testimonials", label: "Testimonials" },
     { href: "/gallery", label: "Gallery" },
-    { href: "/contact", label: "Contact" },
   ]
 
   return (
@@ -66,8 +72,8 @@ export function Navigation() {
                   {item.label}
                 </Link>
               ))}
-              <Link href="/services">
-                <Button className="btn-primary">Book Now</Button>
+              <Link href="/contact?enquiryFor=General">
+                <Button className="btn-primary cursor-pointer">Contact Us</Button>
               </Link>
             </div>
 
@@ -91,8 +97,8 @@ export function Navigation() {
                     {item.label}
                   </Link>
                 ))}
-                <Link href="/services">
-                  <Button className="btn-primary w-full mt-4">Book Now</Button>
+                <Link href="/contact?enquiryFor=General">
+                  <Button className="btn-primary w-full mt-4 cursor-pointer">Contact Us</Button>
                 </Link>
               </div>
             </div>
