@@ -4,11 +4,11 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import kaabaImage from "@/public/images/kaaba.jpg"
+import Image from "next/image"
 
 const slides = [
   {
-    image: kaabaImage,
+    image: '/images/kaaba.jpg',
     quote:
       '"And it is the right of Allah upon the people that they perform Hajj to the House - whoever is able to find thereto a way." - Quran 3:97',
     title: "Sacred Kaaba",
@@ -18,7 +18,7 @@ const slides = [
     contactLink: "/contact",
   },
   {
-    image: "/images/nabawi.jpg",
+    image: "/images/nabwi.jpg",
     quote:
       '"One prayer in my mosque is better than 1,000 prayers elsewhere, except in the Sacred Mosque." - Prophet Muhammad (PBUH)',
     title: "Masjid An-Nabawi",
@@ -51,12 +51,12 @@ const slides = [
 export function HeroSlider() {
   const [currentSlide, setCurrentSlide] = useState(0)
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length)
-    }, 5000)
-    return () => clearInterval(timer)
-  }, [])
+  // useEffect(() => {
+  //   const timer = setInterval(() => {
+  //     setCurrentSlide((prev) => (prev + 1) % slides.length)
+  //   }, 5000)
+  //   return () => clearInterval(timer)
+  // }, [])
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length)
@@ -75,8 +75,8 @@ export function HeroSlider() {
             index === currentSlide ? "opacity-100" : "opacity-0"
           }`}
         >
-          <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: `url(${slide.image})` }}>
-            <div className="absolute inset-0 bg-black bg-opacity-50" />
+          <div className="absolute inset-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: `url(${slide.image})` }}>
+            <div className="absolute inset-0 bg-black/50" />
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-center text-white max-w-4xl px-4">
                 <h2 className="text-4xl md:text-6xl font-bold mb-6 font-arabic">{slide.title}</h2>

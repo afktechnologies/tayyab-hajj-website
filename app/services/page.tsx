@@ -162,50 +162,50 @@ export default function ServicesPage() {
 
       {/* Services Grid */}
       <section className="py-16" id="services-grid">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => {
-              const IconComponent = iconComponents[service.icon as keyof typeof iconComponents]
-             const colorClasses = {
-                yellow: "bg-yellow-100 text-yellow-600",
-                green: "bg-green-100 text-green-600",
-                blue: "bg-blue-100 text-blue-600",
-                purple: "bg-purple-100 text-purple-600",
-                red: "bg-red-100 text-red-600",
-              }
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service, index) => {
+            const IconComponent = iconComponents[service.icon as keyof typeof iconComponents]
+            const colorClasses = {
+              yellow: "bg-yellow-100 text-yellow-600",
+              green: "bg-green-100 text-green-600",
+              blue: "bg-blue-100 text-blue-600",
+              purple: "bg-purple-100 text-purple-600",
+              red: "bg-red-100 text-red-600",
+            }
 
-              return (
-                <Card key={index} className="border-[#DCD1D5] bg-[#FAFAFA] hover:shadow-lg transition-shadow" id={service.id}>
-                  <CardHeader>
-                    <div
-                      className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 ${colorClasses[service.color as keyof typeof colorClasses]}`}
-                    >
-                      <IconComponent className="h-8 w-8" />
-                    </div>
-                    <CardTitle className="text-xl font-arabic text-center text-[#171717]">{service.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-[#757575] mb-4 text-center">{service.description}</p>
-                    <ul className="space-y-2 mb-6">
-                      {service.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-center space-x-2">
-                          <Star className="h-4 w-4 text-yellow-500 flex-shrink-0" />
-                          <span className="text-sm text-gray-600">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <Link href={`/contact?enquiryFor=${encodeURIComponent(service.title)}`}>
-                      <Button className="btn-primary w-full">
-                        Inquire Now
-                      </Button>
-                    </Link>
-                  </CardContent>
-                </Card>
-              )
-            })}
-          </div>
+            return (
+              <Card key={index} className="border-[#DCD1D5] bg-[#FAFAFA] hover:shadow-lg transition-shadow" id={service.id}>
+                <CardHeader>
+                  <div
+                    className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 ${colorClasses[service.color as keyof typeof colorClasses]}`}
+                  >
+                    <IconComponent className="h-8 w-8" />
+                  </div>
+                  <CardTitle className="text-xl font-arabic text-center text-[#171717]">{service.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-[#757575] mb-4 text-center md:line-clamp-2">{service.description}</p>
+                  <ul className="space-y-2 mb-6">
+                    {service.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-center space-x-2">
+                        <Star className="h-4 w-4 text-yellow-500 flex-shrink-0" />
+                        <span className="text-sm text-gray-600">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link href={`/contact?enquiryFor=${encodeURIComponent(service.title)}`}>
+                    <Button className="btn-primary w-full">
+                      Inquire Now
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            )
+          })}
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* FAQ Section */}
       <section className="py-16 bg-warm-beige" id="faqs">

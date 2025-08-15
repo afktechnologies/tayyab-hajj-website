@@ -19,10 +19,10 @@ export function Navigation() {
     { href: "/", label: "Home" },
     { href: "/trips", label: "Upcoming Trips" },
     { href: "/destinations", label: "Destinations" },
-    { href: "/about", label: "About Us" },
     { href: "/services", label: "Services" },
     { href: "/testimonials", label: "Testimonials" },
     { href: "/gallery", label: "Gallery" },
+    { href: "/about", label: "About Us" },
   ]
 
   return (
