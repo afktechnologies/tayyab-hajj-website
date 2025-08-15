@@ -1,5 +1,6 @@
 import { ContactForm } from "@/components/contact-form"
 import { Phone, Mail, MapPin, MessageCircle } from "lucide-react"
+import { Suspense } from "react"
 
 export default async function ContactPage() {
   return (
@@ -83,7 +84,9 @@ export default async function ContactPage() {
             </div>
 
             {/* Contact Form */}
+             <Suspense fallback={<div className="text-center text-gray-600">Loading contact form...</div>}>
             <ContactForm />
+            </Suspense>
           </div>
         </div>
       </section>

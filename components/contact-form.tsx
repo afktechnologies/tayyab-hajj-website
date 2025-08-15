@@ -22,11 +22,7 @@ interface FormData {
 
 export function ContactForm() {
   const searchParams = useSearchParams();
-      const [enquiryFor, setEnquiryFor] = useState(searchParams.get('enquiryFor'));
-
-      useEffect(() => {
-        setEnquiryFor(searchParams.get('enquiryFor'));
-      }, [searchParams])
+      const enquiryFor = searchParams.get('enquiryFor');
 
   console.log("Enquiry For:", enquiryFor)
   const initialValues: FormData = {
