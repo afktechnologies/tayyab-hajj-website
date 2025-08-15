@@ -33,7 +33,7 @@ export function TestimonialsSlider({ initialTestimonials = [] }: TestimonialsSli
     if (initialTestimonials.length === 0) {
       fetchTestimonials();
     }
-  }, [initialTestimonials]);
+  }, []);
 
   useEffect(() => {
     if (testimonials.length > 0) {
