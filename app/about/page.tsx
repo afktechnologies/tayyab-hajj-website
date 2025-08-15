@@ -76,7 +76,7 @@ export default function AboutPage() {
                 <div className="flex flex-col items-center text-center">
                   <div className="w-32 h-32 rounded-full overflow-hidden mb-6">
                     <Image
-                      src="/placeholder.svg?height=128&width=128"
+                      src="/images/abdul-nur.jpg"
                       alt="Sheikh Abdullahu Nur Abul Fadli"
                       width={128}
                       height={128}
@@ -129,7 +129,7 @@ export default function AboutPage() {
                 <div className="flex flex-col items-center text-center">
                   <div className="w-32 h-32 rounded-full overflow-hidden mb-6">
                     <Image
-                      src="/placeholder.svg?height=128&width=128"
+                      src="/images/abdul-majid.jpg"
                       alt="Br. Abdulmajid Mohamed"
                       width={128}
                       height={128}

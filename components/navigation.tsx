@@ -5,6 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Menu, X, Phone, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 export function Navigation() {
   const pathname = usePathname()
@@ -52,8 +53,8 @@ export function Navigation() {
           <div className="flex justify-between items-center py-4">
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-yellow-600 to-yellow-700 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-xl font-arabic">ط</span>
+              <div className="w-12 h-12 flex items-center justify-center">
+                <Image src={"/images/logo.png"} alt="logo" width={60} height={60} />
               </div>
               <div>
                 <h1 className="text-xl font-bold text-gray-800 font-arabic">Taybah Hajj & Umrah</h1>

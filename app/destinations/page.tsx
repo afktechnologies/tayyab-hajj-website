@@ -61,13 +61,13 @@ export default async function DestinationsPage() {
                 value="mecca"
                 className="py-3 text-lg font-semibold data-[state=active]:bg-yellow-600 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 cursor-pointer"
               >
-                🕋 Mecca
+                Mecca
               </TabsTrigger>
               <TabsTrigger
                 value="madinah"
                 className="py-3 text-lg font-semibold data-[state=active]:bg-green-800 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 cursor-pointer"
               >
-                🕌 Madinah
+                Madinah
               </TabsTrigger>
             </TabsList>
 
@@ -115,7 +115,7 @@ export default async function DestinationsPage() {
             <TabsContent value="madinah">
               <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4 font-arabic text-gray-800">
-                  🕌 The Illuminated City of Madinah
+                  🕌🌴 The Illuminated City of Madinah
                 </h2>
                 <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-6">
                   The city of the Prophet (PBUH) and the second holiest city in Islam

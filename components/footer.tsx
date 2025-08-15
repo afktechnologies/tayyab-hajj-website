@@ -3,6 +3,7 @@ import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { Facebook, Instagram, MessageCircle, Phone, Mail, MapPin } from "lucide-react"
+import Image from "next/image"
 
 export function Footer() {
   const pathname = usePathname()
@@ -19,8 +20,8 @@ export function Footer() {
           {/* Company Info */}
           <div>
             <div className="flex items-center space-x-3 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-yellow-600 to-yellow-700 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold font-arabic">ط</span>
+              <div className="w-10 h-10 bg-white flex items-center justify-center">
+                <Image src={"/images/logo.png"} alt="logo" width={100} height={100} />
               </div>
               <div>
                 <h3 className="text-lg font-bold font-arabic">Taybah Hajj & Umrah</h3>
