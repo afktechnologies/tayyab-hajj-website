@@ -115,7 +115,7 @@ export default function AboutPage() {
                       <Globe className="h-5 w-5 text-red-600 mt-1 flex-shrink-0" />
                       <div>
                         <h4 className="font-semibold">Community Leadership</h4>
-                        <p className="text-gray-600 text-sm">Have Masters in Fiqh and Aqeedah</p>
+                        <p className="text-gray-600 text-sm">Have Masters in Fiqh and Aqeedah, Imam at masjid Assunnah</p>
                       </div>
                     </div>
                   </div>
