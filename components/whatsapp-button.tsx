@@ -5,7 +5,7 @@ import { MessageCircle } from "lucide-react"
 export function WhatsAppButton() {
   const handleWhatsAppClick = () => {
     window.open(
-      "https://chat.whatsapp.com/JHOMSw0RIPp5AHODbhLB91?mode=ems_copy_c",
+      "https://wa.me/+16124071666",
       "_blank",
     )
   }
