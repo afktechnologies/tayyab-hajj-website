@@ -239,12 +239,12 @@ export default function ServicesPage() {
             <Link href="/contact">
               <Button className="btn-primary text-lg px-8 py-3">Schedule Consultation</Button>
             </Link>
-            <a href="tel:+15551234567">
+            <a href="tel:+16124071666">
               <Button
                 variant="outline"
                 className="text-white border-white hover:bg-white hover:text-gray-900 text-lg px-8 py-3 bg-transparent"
               >
-                Call Now: +1 (555) 123-4567
+                Call Now: +1 612-407-1666
               </Button>
             </a>
           </div>

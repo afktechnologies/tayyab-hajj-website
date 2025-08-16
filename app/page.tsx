@@ -84,7 +84,7 @@ export default async function HomePage() {
                 <MessageCircle className="h-12 w-12 text-green-500 mx-auto mb-4" />
                 <h3 className="font-semibold mb-2">Join WhatsApp Group</h3>
                 <p className="text-sm text-gray-600 mb-4">Stay updated with our community</p>
-                <a href="https://chat.whatsapp.com/your-group-invite" target="_blank" rel="noopener noreferrer">
+                <a href="https://chat.whatsapp.com/JHOMSw0RIPp5AHODbhLB91?mode=ems_copy_c" target="_blank" rel="noopener noreferrer">
                   <Button className="bg-green-500 hover:bg-green-600 text-white w-full">Join Group</Button>
                 </a>
               </CardContent>

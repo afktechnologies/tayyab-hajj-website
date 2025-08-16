@@ -14,7 +14,7 @@ const slides = [
     title: "Sacred Kaaba",
     bookLink: "/services",
     whatsappLink:
-      "https://wa.me/15551234567?text=Assalamu%20Alaikum,%20I%20would%20like%20to%20inquire%20about%20Hajj%20and%20Umrah%20packages.",
+      "https://chat.whatsapp.com/JHOMSw0RIPp5AHODbhLB91?mode=ems_copy_c",
     contactLink: "/contact",
   },
   {
@@ -24,7 +24,7 @@ const slides = [
     title: "Masjid An-Nabawi",
     bookLink: "/services",
     whatsappLink:
-      "https://wa.me/15551234567?text=Assalamu%20Alaikum,%20I%20would%20like%20to%20inquire%20about%20Hajj%20and%20Umrah%20packages.",
+      "https://chat.whatsapp.com/JHOMSw0RIPp5AHODbhLB91?mode=ems_copy_c",
     contactLink: "/contact",
   },
   {
@@ -34,7 +34,7 @@ const slides = [
     title: "Our Pilgrims",
     bookLink: "/services",
     whatsappLink:
-      "https://wa.me/15551234567?text=Assalamu%20Alaikum,%20I%20would%20like%20to%20inquire%20about%20Hajj%20and%20Umrah%20packages.",
+      "https://chat.whatsapp.com/JHOMSw0RIPp5AHODbhLB91?mode=ems_copy_c",
     contactLink: "/contact",
   },
   {
@@ -43,7 +43,7 @@ const slides = [
     title: "Sacred Rituals",
     bookLink: "/services",
     whatsappLink:
-      "https://wa.me/15551234567?text=Assalamu%20Alaikum,%20I%20would%20like%20to%20inquire%20about%20Hajj%20and%20Umrah%20packages.",
+      "https://chat.whatsapp.com/JHOMSw0RIPp5AHODbhLB91?mode=ems_copy_c",
     contactLink: "/contact",
   },
 ]

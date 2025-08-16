@@ -50,15 +50,6 @@ export function Footer() {
               >
                 <Instagram className="h-5 w-5" />
               </a>
-              <a
-                href="https://chat.whatsapp.com/your-group-invite"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-yellow-500 transition-colors"
-                aria-label="WhatsApp Group"
-              >
-                <MessageCircle className="h-5 w-5" />
-              </a>
             </div>
           </div>
 
@@ -137,15 +128,21 @@ export function Footer() {
             <div className="space-y-3">
               <div className="flex items-center space-x-2">
                 <Phone className="h-4 w-4 text-yellow-500" />
-                <span className="text-gray-300 text-sm">+1 (555) 123-4567</span>
+                <Link href="tel:+16124071666" className="text-gray-300 hover:text-yellow-500 transition-colors">
+                <span className="text-gray-300 text-sm">612-407-1666
+</span>
+                </Link>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4 text-yellow-500" />
-                <span className="text-gray-300 text-sm">info@taybahhajj.com</span>
+                <Link href="mailto:tayyabhajjumrah@gmail.com" className="hover:underline">
+                <span className="text-gray-300 text-sm">tayyabhajjumrah@gmail.com</span>
+                </Link>
               </div>
               <div className="flex items-center space-x-2">
                 <MapPin className="h-4 w-4 text-yellow-500" />
-                <span className="text-gray-300 text-sm">USA & Canada</span>
+                <span className="text-gray-300 text-sm">373 pedersen st Ste 102
+Saint Paul Mn 55119</span>
               </div>
               <a
                 href="https://chat.whatsapp.com/your-group-invite"
@@ -154,7 +151,9 @@ export function Footer() {
                 className="flex items-center space-x-2 text-gray-300 hover:text-yellow-500 transition-colors"
               >
                 <MessageCircle className="h-4 w-4 text-yellow-500" />
-                <span className="text-sm">Join WhatsApp Group</span>
+                <Link href="https://chat.whatsapp.com/JHOMSw0RIPp5AHODbhLB91?mode=ems_copy_c" className="hover:underline">
+                <span className="text-sm">WhatsApp</span>
+                </Link>
               </a>
             </div>
           </div>

@@ -33,8 +33,8 @@ export default async function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-xl">Phone</h3>
-                    <a href="tel:+15551234567" className="text-gray-600 hover:text-yellow-600 transition-colors">
-                      +1 (555) 123-4567
+                    <a href="tel:+16124071666" className="text-gray-600 hover:text-yellow-600 transition-colors">
+                      +1612-407-1666
                     </a>
                   </div>
                 </div>
@@ -46,10 +46,10 @@ export default async function ContactPage() {
                   <div>
                     <h3 className="font-semibold text-xl">Email</h3>
                     <a
-                      href="mailto:info@taybahhajj.com"
+                      href="mailto:tayyabhajjumrah@gmail.com"
                       className="text-gray-600 hover:text-green-600 transition-colors"
                     >
-                      info@taybahhajj.com
+                      tayyabhajjumrah@gmail.com
                     </a>
                   </div>
                 </div>
@@ -60,7 +60,8 @@ export default async function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-xl">Office Location</h3>
-                    <p className="text-gray-600">Serving Muslims across USA & Canada (Online/Remote Operations)</p>
+                    <p className="text-gray-600">373 pedersen st Ste 102
+Saint Paul Mn 55119</p>
                   </div>
                 </div>
 
@@ -71,7 +72,7 @@ export default async function ContactPage() {
                   <div>
                     <h3 className="font-semibold text-xl">WhatsApp Group</h3>
                     <a
-                      href="https://chat.whatsapp.com/your-group-invite"
+                      href="https://chat.whatsapp.com/JHOMSw0RIPp5AHODbhLB91?mode=ems_copy_c"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-600 hover:text-green-600 transition-colors"
@@ -97,7 +98,7 @@ export default async function ContactPage() {
           <h2 className="text-3xl font-bold text-center mb-8 font-arabic text-gray-800">Find Us on the Map</h2>
           <div className="relative h-[400px] w-full rounded-lg overflow-hidden shadow-lg">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.2100000000004!2d-122.4194155!3d37.7749295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858064a9b0d7b7%3A0x4a5d4e2a7b0d7b7!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1678901234567!5m2!1sen!2sus"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2823.5599730325016!2d-93.01585522392446!3d44.952612471070125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87f7d6066e384b79%3A0xc1b0abe3ff59ea5c!2s373%20Pedersen%20St%2C%20St%20Paul%2C%20MN%2055119%2C%20USA!5e0!3m2!1sen!2sin!4v1755358664252!5m2!1sen!2sin"
               width="100%"
               height="100%"
               style={{ border: 0 }}

@@ -83,7 +83,7 @@ export default function AboutPage() {
                       className="object-cover"
                     />
                   </div>
-                  <h3 className="text-2xl font-bold mb-2 font-arabic">Sheikh Abdullahu Nur Abul Fadli</h3>
+                  <h3 className="text-2xl font-bold mb-2 font-arabic">Sheikh Abdullaahi Nur (Abul Fadli)</h3>
                   <p className="text-yellow-600 font-semibold mb-4">Lead Scholar & Spiritual Guide</p>
 
                   <div className="space-y-4 text-left w-full">
@@ -115,7 +115,7 @@ export default function AboutPage() {
                       <Globe className="h-5 w-5 text-red-600 mt-1 flex-shrink-0" />
                       <div>
                         <h4 className="font-semibold">Community Leadership</h4>
-                        <p className="text-gray-600 text-sm">Former leader at IANA & HARO, Imam at Masjid Assunnah</p>
+                        <p className="text-gray-600 text-sm">Have Masters in Fiqh and Aqeedah</p>
                       </div>
                     </div>
                   </div>

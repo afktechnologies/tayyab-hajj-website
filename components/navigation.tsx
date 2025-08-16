@@ -34,11 +34,15 @@ export function Navigation() {
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-1">
               <Phone className="h-3 w-3" />
-              <span>+1 (555) 123-4567</span>
+              <Link href="tel:+16124071666" className="hover:underline">
+              <span>612-407-1666</span>
+              </Link>
             </div>
             <div className="flex items-center space-x-1">
               <Mail className="h-3 w-3" />
-              <span>info@taybahhajj.com</span>
+              <Link href="mailto:tayyabhajjumrah@gmail.com" className="hover:underline">
+              <span>tayyabhajjumrah@gmail.com</span>
+              </Link>
             </div>
           </div>
           <div className="hidden md:block">
