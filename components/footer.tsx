@@ -144,17 +144,16 @@ export function Footer() {
                 <span className="text-gray-300 text-sm">373 pedersen st Ste 102
 Saint Paul Mn 55119</span>
               </div>
-              <a
-                href="https://chat.whatsapp.com/your-group-invite"
+              <Link
+                href="https://chat.whatsapp.com/JHOMSw0RIPp5AHODbhLB91?mode=ems_copy_c"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-2 text-gray-300 hover:text-yellow-500 transition-colors"
               >
                 <MessageCircle className="h-4 w-4 text-yellow-500" />
-                <Link href="https://chat.whatsapp.com/JHOMSw0RIPp5AHODbhLB91?mode=ems_copy_c" className="hover:underline">
                 <span className="text-sm">WhatsApp</span>
-                </Link>
-              </a>
+               
+              </Link>
             </div>
           </div>
         </div>

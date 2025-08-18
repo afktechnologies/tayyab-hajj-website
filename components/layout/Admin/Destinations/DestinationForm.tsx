@@ -1,13 +1,9 @@
-"use client";
+"use client"
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Form, Formik } from "formik";
+import { Button, TextField, Typography, Box, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import CloudinaryUpload from "@/components/common/CloudinaryUpload";
 import Image from "next/image";
@@ -76,11 +72,11 @@ export default function DestinationForm({ initialValues, isEditMode = false, des
   };
 
   return (
-    <div className="p-6 bg-[#FAFAFA] rounded-lg shadow-md max-w-lg mx-auto my-8">
+    <Box sx={{ p: "24px", bgcolor: "#F5F5F5", borderRadius: "8px", boxShadow: "0 4px 6px rgba(0,0,0,0.1)", maxWidth: "600px", mx: "auto", my: "32px" }}>
       {loading && <Loader value="Processing..." />}
-      <h1 className="text-2xl font-bold text-[#171717] mb-6">
+      <Typography sx={{ fontSize: "1.5rem", fontWeight: "bold", color: "#1F2937", mb: "24px" }}>
         {isEditMode ? "Edit Destination" : "Create New Destination"}
-      </h1>
+      </Typography>
       <Formik
         initialValues={{
           name: initialValues?.name || "",
@@ -94,121 +90,179 @@ export default function DestinationForm({ initialValues, isEditMode = false, des
         enableReinitialize
       >
         {({ errors, touched, handleBlur, values, setFieldValue }) => (
-          <Form className="grid gap-4">
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="name" className="text-right text-[#171717]">
-                Name
-              </Label>
-              <Input
-                id="name"
-                name="name"
-                value={values.name}
-                onChange={(e) => setFieldValue("name", e.target.value)}
-                onBlur={handleBlur}
-                className="col-span-3 border-[#DCD1D5] focus:ring-[#00F0B1] focus:border-[#00F0B1] bg-[#FFFFFF] text-[#171717]"
-                required
-              />
-              {touched.name && errors.name && (
-                <span className="text-[#654A55] text-xs col-span-3 col-start-2">{errors.name}</span>
-              )}
-            </div>
-            <div className="grid grid-cols-4 items-start gap-4">
-              <Label htmlFor="description" className="text-right pt-2 text-[#171717]">
-                Description
-              </Label>
-              <Textarea
-                id="description"
-                name="description"
-                value={values.description}
-                onChange={(e) => setFieldValue("description", e.target.value)}
-                onBlur={handleBlur}
-                className="col-span-3 border-[#DCD1D5] focus:ring-[#00F0B1] focus:border-[#00F0B1] bg-[#FFFFFF] text-[#171717]"
-                required
-              />
-              {touched.description && errors.description && (
-                <span className="text-[#654A55] text-xs col-span-3 col-start-2">{errors.description}</span>
-              )}
-            </div>
-            <div className="grid grid-cols-4 items-start gap-4">
-              <Label htmlFor="significance" className="text-right pt-2 text-[#171717]">
-                Significance
-              </Label>
-              <Textarea
-                id="significance"
-                name="significance"
-                value={values.significance}
-                onChange={(e) => setFieldValue("significance", e.target.value)}
-                onBlur={handleBlur}
-                className="col-span-3 border-[#DCD1D5] focus:ring-[#00F0B1] focus:border-[#00F0B1] bg-[#FFFFFF] text-[#171717]"
-                required
-              />
-              {touched.significance && errors.significance && (
-                <span className="text-[#654A55] text-xs col-span-3 col-start-2">{errors.significance}</span>
-              )}
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="image" className="text-right text-[#171717]">
-                Image
-              </Label>
-              <div className="col-span-3">
+          <Form style={{ display: "grid", gap: "16px" }}>
+            <Box sx={{ display: "grid", gridTemplateColumns: "1fr 3fr", alignItems: "center", gap: "16px" }}>
+              <Typography sx={{ textAlign: "right", color: "#1F2937" }}>Name</Typography>
+              <Box>
+                <TextField
+                  id="name"
+                  name="name"
+                  value={values.name}
+                  onChange={(e) => setFieldValue("name", e.target.value)}
+                  onBlur={handleBlur}
+                  fullWidth
+                  variant="outlined"
+                  size="small"
+                  required
+                  sx={{
+                    "& .MuiOutlinedInput-root": {
+                      "& fieldset": { borderColor: "#E5E7EB" },
+                      "&:hover fieldset": { borderColor: "#1976D2" },
+                      "&.Mui-focused fieldset": { borderColor: "#1976D2" },
+                    },
+                    "& .MuiInputBase-input": { color: "#1F2937" },
+                  }}
+                />
+                {touched.name && errors.name && (
+                  <Typography sx={{ color: "#EF4444", fontSize: "0.75rem", mt: "4px" }}>
+                    {errors.name}
+                  </Typography>
+                )}
+              </Box>
+            </Box>
+            <Box sx={{ display: "grid", gridTemplateColumns: "1fr 3fr", alignItems: "start", gap: "16px" }}>
+              <Typography sx={{ textAlign: "right", color: "#1F2937", pt: "8px" }}>Description</Typography>
+              <Box>
+                <TextField
+                  id="description"
+                  name="description"
+                  value={values.description}
+                  onChange={(e) => setFieldValue("description", e.target.value)}
+                  onBlur={handleBlur}
+                  fullWidth
+                  multiline
+                  rows={4}
+                  variant="outlined"
+                  required
+                  sx={{
+                    "& .MuiOutlinedInput-root": {
+                      "& fieldset": { borderColor: "#E5E7EB" },
+                      "&:hover fieldset": { borderColor: "#1976D2" },
+                      "&.Mui-focused fieldset": { borderColor: "#1976D2" },
+                    },
+                    "& .MuiInputBase-input": { color: "#1F2937" },
+                  }}
+                />
+                {touched.description && errors.description && (
+                  <Typography sx={{ color: "#EF4444", fontSize: "0.75rem", mt: "4px" }}>
+                    {errors.description}
+                  </Typography>
+                )}
+              </Box>
+            </Box>
+            <Box sx={{ display: "grid", gridTemplateColumns: "1fr 3fr", alignItems: "start", gap: "16px" }}>
+              <Typography sx={{ textAlign: "right", color: "#1F2937", pt: "8px" }}>Significance</Typography>
+              <Box>
+                <TextField
+                  id="significance"
+                  name="significance"
+                  value={values.significance}
+                  onChange={(e) => setFieldValue("significance", e.target.value)}
+                  onBlur={handleBlur}
+                  fullWidth
+                  multiline
+                  rows={2}
+                  variant="outlined"
+                  required
+                  sx={{
+                    "& .MuiOutlinedInput-root": {
+                      "& fieldset": { borderColor: "#E5E7EB" },
+                      "&:hover fieldset": { borderColor: "#1976D2" },
+                      "&.Mui-focused fieldset": { borderColor: "#1976D2" },
+                    },
+                    "& .MuiInputBase-input": { color: "#1F2937" },
+                  }}
+                />
+                {touched.significance && errors.significance && (
+                  <Typography sx={{ color: "#EF4444", fontSize: "0.75rem", mt: "4px" }}>
+                    {errors.significance}
+                  </Typography>
+                )}
+              </Box>
+            </Box>
+            <Box sx={{ display: "grid", gridTemplateColumns: "1fr 3fr", alignItems: "center", gap: "16px" }}>
+              <Typography sx={{ textAlign: "right", color: "#1F2937" }}>Image</Typography>
+              <Box>
                 <CloudinaryUpload
                   setImageUrl={(url: string) => setFieldValue("image", url)}
                   size="400 x 300"
                 />
                 {values.image && (
-                  <div className="relative w-full h-24 mt-2">
-                    <Image src={values.image} alt="Preview" fill className="object-cover rounded" />
-                  </div>
+                  <Box sx={{ position: "relative", width: "100%", height: "96px", mt: "8px" }}>
+                    <Image src={values.image} alt="Preview" fill style={{ objectFit: "cover", borderRadius: "4px" }} />
+                  </Box>
                 )}
                 {touched.image && errors.image && (
-                  <span className="text-[#654A55] text-xs">{errors.image}</span>
+                  <Typography sx={{ color: "#EF4444", fontSize: "0.75rem", mt: "4px" }}>
+                    {errors.image}
+                  </Typography>
                 )}
-              </div>
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="city" className="text-right text-[#171717]">
-                City
-              </Label>
-              <Select
-                name="city"
-                value={values.city}
-                onValueChange={(value) => setFieldValue("city", value)}
-              >
-                <SelectTrigger className="col-span-3 border-[#DCD1D5] focus:ring-[#00F0B1] bg-[#FFFFFF] text-[#171717]">
-                  <SelectValue placeholder="Select a city" />
-                </SelectTrigger>
-                <SelectContent>
-                  {["Mecca", "Madinah"].map((city) => (
-                    <SelectItem key={city} value={city}>{city}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              {touched.city && errors.city && (
-                <span className="text-[#654A55] text-xs col-span-3 col-start-2">{errors.city}</span>
-              )}
-            </div>
-            {error && <span className="text-[#654A55] text-sm block text-center">{error}</span>}
-            <div >
+              </Box>
+            </Box>
+            <Box sx={{ display: "grid", gridTemplateColumns: "1fr 3fr", alignItems: "center", gap: "16px" }}>
+              <Typography sx={{ textAlign: "right", color: "#1F2937" }}>City</Typography>
+              <Box>
+                <FormControl fullWidth variant="outlined" size="small">
+                  <InputLabel sx={{ color: "#1F2937" }}>City</InputLabel>
+                  <Select
+                    name="city"
+                    value={values.city}
+                    onChange={(e) => setFieldValue("city", e.target.value)}
+                    label="City"
+                    sx={{
+                      "& .MuiOutlinedInput-notchedOutline": { borderColor: "#E5E7EB" },
+                      "&:hover .MuiOutlinedInput-notchedOutline": { borderColor: "#1976D2" },
+                      "&.Mui-focused .MuiOutlinedInput-notchedOutline": { borderColor: "#1976D2" },
+                      "& .MuiSelect-select": { color: "#1F2937" },
+                    }}
+                  >
+                    {["Mecca", "Madinah"].map((city) => (
+                      <MenuItem key={city} value={city}>{city}</MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+                {touched.city && errors.city && (
+                  <Typography sx={{ color: "#EF4444", fontSize: "0.75rem", mt: "4px" }}>
+                    {errors.city}
+                  </Typography>
+                )}
+              </Box>
+            </Box>
+            {error && (
+              <Typography sx={{ color: "#EF4444", fontSize: "0.875rem", textAlign: "center" }}>
+                {error}
+              </Typography>
+            )}
+            <Box sx={{ display: "flex", gap: "16px", mt: "16px" }}>
               <Button
                 type="submit"
+                variant="contained"
+                color="primary"
+                fullWidth
                 disabled={loading}
-                className="w-full mt-4 bg-[#5000C9] hover:bg-[#5D2DE6] text-[#FAFAFA] focus:ring-[#00F0B1] disabled:bg-[#757575]"
+                sx={{ bgcolor: "#1976D2", "&:hover": { bgcolor: "#115293" }, "&.Mui-disabled": { bgcolor: "#B0BEC5", color: "#37474F" } }}
               >
                 {isEditMode ? "Update Destination" : "Create Destination"}
               </Button>
               <Button
                 type="button"
-                variant="outline"
+                variant="outlined"
+                fullWidth
                 onClick={() => router.push("/admin/destinations")}
-                className="w-full mt-4 border-[#DCD1D5] text-[#171717] hover:bg-[#DCD1D5]"
                 disabled={loading}
+                sx={{
+                  borderColor: "#E5E7EB",
+                  color: "#1F2937",
+                  "&:hover": { bgcolor: "#F5F5F5", borderColor: "#E5E7EB" },
+                  "&.Mui-disabled": { borderColor: "#B0BEC5", color: "#37474F" },
+                }}
               >
                 Cancel
               </Button>
-            </div>
+            </Box>
           </Form>
         )}
       </Formik>
-    </div>
+    </Box>
   );
 }

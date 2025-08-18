@@ -1,8 +1,16 @@
 "use client"
 
 import { MessageCircle } from "lucide-react"
+import { usePathname } from "next/navigation"
 
 export function WhatsAppButton() {
+  const pathname = usePathname()
+  
+    // Hide navbar for /auth/login or /admin routes
+    if (pathname === "/auth/login" || pathname.startsWith("/admin")) {
+      return null
+    }
+
   const handleWhatsAppClick = () => {
     window.open(
       "https://wa.me/+16124071666",
